@@ -6,7 +6,7 @@ import axios from "axios"
 
 const PostBox = ({ id, image, caption = "No caption found", onPostDeleted }) => {
     const [successMessage, setSuccessMessage] = useState('')
-    console.log(`http://localhost:3000/del-post/${id}`)
+    console.log(`https://backend-0pln.onrender.com/${id}`)
 
     const deletePost = async (id) => {
         try {

@@ -7,7 +7,7 @@ const Feed = () => {
 
     const fetchPosts = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/posts')
+            const response = await axios.get('https://backend-0pln.onrender.com/posts')
             setPosts(response.data.post)
         } catch (error) {
             console.log(`Posts fetching from backend failed !\n`, error)
