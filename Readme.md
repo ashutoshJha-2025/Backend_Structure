@@ -1,4 +1,5 @@
 # Backend - CRUD + Image Upload (ImageKit)
+ Live PREVIEW: https://posts-website.onrender.com/
 
 This backend is built using **Node.js, Express, MongoDB**, and integrates **ImageKit** for image uploads. It is connected to a **React + Tailwind CSS frontend**.
 
