@@ -104,3 +104,13 @@ CORS_ORIGIN=*
 * Built with **React + Tailwind CSS**
 * Connected to backend APIs for post creation and display
 
+---
+
+## 📂 API Endpoints
+
+| Method | Endpoint         | Description       |
+| ------ | ---------------- | ----------------- |
+| GET    | `/posts`         | Get all posts     |
+| POST   | `/create-post`   | Create a new post |
+| DELETE | `/del-post/:id`  | Delete a post     |
+
