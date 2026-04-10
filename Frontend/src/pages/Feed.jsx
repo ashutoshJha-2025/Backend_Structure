@@ -26,7 +26,7 @@ const Feed = () => {
                         <PostBox id={individualPost._id} image={individualPost.image} caption={individualPost.caption} onPostDeleted={fetchPosts} />
                     ))
                 ) : (
-                    <p>No posts yet</p>
+                    <p className="text-2xl text-center text-white">No posts yet</p>
                 )}
             </div >
         </>
