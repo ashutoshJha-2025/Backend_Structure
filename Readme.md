@@ -40,6 +40,14 @@ Backend/
 ├── package.json
 └── README.md
 ```
+### 📁 Simple Analogy
+
+- **db** - Connects your application to the database  
+- **models** - Defines data structure (schemas, models, relationships)  
+- **utils** - Reusable helper functions  
+- **controllers** - Handles requests and sends responses  
+- **middlewares** - Runs before controllers (auth, validation, logging, errors)  
+- **routes** - Defines API endpoints and maps them to controllers
 
 ---
 
