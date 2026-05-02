@@ -28,11 +28,10 @@ Backend/
 │   ├── services/
 │   │   └── storage.service.js  # ImageKit integration (image upload)
 │   │
-│   |── controllers/
-│   |── middlewares/
-│   |── routes/
-│   |── utils/
-│   │
+│   ├── controller/
+│   ├── middleware/
+│   ├── routes/
+│   
 │   └── app.js           # Post CRUD + routes connected to frontend
 │
 ├── .env                 # Environment variables
@@ -44,9 +43,9 @@ Backend/
 
 - **db** - Connects your application to the database  
 - **models** - Defines data structure (schemas, models, relationships)  
-- **utils** - Reusable helper functions  
-- **controllers** - Handles requests and sends responses  
-- **middlewares** - Runs before controllers (auth, validation, logging, errors)  
+- **services** - Reusable helper functions and external integrations  
+- **controller** - Handles requests and sends responses  
+- **middleware** - Runs before controllers (auth, validation, logging, errors)  
 - **routes** - Defines API endpoints and maps them to controllers
 
 ---
@@ -68,6 +67,8 @@ Backend/
   * Contains **Post CRUD operations**
   * Handles routes used by frontend
 
+* `.env.text_sample` provides a sample environment configuration.
+
 ---
 
 ## 🚀 Setup Instructions
@@ -81,7 +82,7 @@ npm init -y
 ### 2. Install dependencies
 
 ```bash
-npm i express mongoose dotenv cors multer @imagekit/nodejs
+npm i express mongoose dotenv cors multer @imagekit/nodejs jsonwebtoken cookie-parser bcryptjs express-validator
 ```
 
 ### 3. Run server
@@ -89,22 +90,6 @@ npm i express mongoose dotenv cors multer @imagekit/nodejs
 ```bash
 npx nodemon server.js
 ```
-
----
-
-## 🔐 Environment Variables (.env)
-
-```
-PORT=3000
-MONGODB_URI=your_mongodb_connection_string
-
-IMAGEKIT_PUBLIC_KEY=your_public_key
-IMAGEKIT_PRIVATE_KEY=your_private_key
-IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_id
-
-CORS_ORIGIN=*
-```
-
 ---
 
 ## 📎 Frontend
@@ -116,9 +101,12 @@ CORS_ORIGIN=*
 
 ## 📂 API Endpoints
 
-| Method | Endpoint         | Description       |
-| ------ | ---------------- | ----------------- |
-| GET    | `/posts`         | Get all posts     |
-| POST   | `/create-post`   | Create a new post |
-| DELETE | `/del-post/:id`  | Delete a post     |
+| Method | Endpoint                                         | Description           |
+| ------ | ------------------------------------------------ | --------------------- |
+| POST   | `/api/user/authentication/register`              | Register a new user   |
+| POST   | `/api/user/authentication/login`                 | Login an existing user|
+| GET    | `/api/posts`                                     | Get all posts         |
+| GET    | `/api/posts/my-posts`                            | Get posts for logged-in user |
+| POST   | `/api/posts/create-post`                         | Create a new post     |
+| DELETE | `/api/posts/delete-post/:id`                     | Delete a post         |
 

@@ -1,5 +1,5 @@
 import { app } from '../src/app.js'
-import { Note } from '../src/models/note.model.js'
+import { Note } from './note.model.js'
 
 app.use(express.json())
 

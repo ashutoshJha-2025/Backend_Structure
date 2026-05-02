@@ -1,19 +1,10 @@
 import { MdDelete } from "react-icons/md";
-import { useState } from "react";
-import MessageBox from "../components/MessageBox"
 import axios from "axios"
 
-
-const PostBox = ({ id, image, caption = "No caption found", onPostDeleted }) => {
-    const [successMessage, setSuccessMessage] = useState('')
-
+const PostBox = ({ id, image, caption = "No caption found", date, owner, property }) => {
     const deletePost = async (id) => {
         try {
-            const result = await axios.delete(`https://backend-0pln.onrender.com/del-post/${id}`)
-            setSuccessMessage('Post deleted successfully')
-            if (onPostDeleted) {
-                onPostDeleted()
-            }
+            const result = await axios.delete(`https://backend-0pln.onrender.com/api/posts/delete-post/${id}`, { withCredentials: true })
         } catch (error) {
             console.log(error)
         }
@@ -21,12 +12,16 @@ const PostBox = ({ id, image, caption = "No caption found", onPostDeleted }) => 
 
     return (
         <>
-            <div key={id} className="h-65 w-70 bg-(--bg) rounded-2xl flex flex-col justify-between items-center relative hover:scale-101 transition-all duration-100 ease-in">
-                <div className="h-[85%] overflow-hidden p-2 rounded-xl ">
+            <div key={id} className="h-80 w-70 border-4 border-[#5F5F5F] rounded-2xl flex flex-col justify-between items-center relative hover:scale-101 transition-all duration-100 ease-in">
+                <div className="h-[15%] w-full px-4 flex justify-around items-end">
+                    <h1 className="text-white font-medium text-xl">{owner}</h1>
+                    <span className="text-red-400 text-md">{date}</span>
+                </div>
+                <div className="h-[70%] overflow-hidden p-2 rounded-xl ">
                     <img
                         src={image}
                         alt={caption}
-                        className="h-full w-full object-contain shadow-2xl rounded-xl"
+                        className="h-full w-full object-contain rounded-xl"
                     />
                 </div>
                 <div className="flex justify-between h-[15%] w-full items-center px-6">
@@ -35,11 +30,9 @@ const PostBox = ({ id, image, caption = "No caption found", onPostDeleted }) => 
                     </p>
                     <MdDelete
                         onClick={() => deletePost(id)}
-                        className="text-white font-semibold hover:text-red-500 cursor-pointer text-xl" />
+                        className={`text-white font-semibold hover:text-red-500 cursor-pointer text-xl ${property}`} />
                 </div>
             </div>
-
-            {successMessage && <MessageBox msg={successMessage} />}
         </>
     )
 }
