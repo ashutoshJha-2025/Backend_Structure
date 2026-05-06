@@ -21,7 +21,7 @@ const Register = () => {
             setMessage(result.data.message)
             localStorage.setItem('username', result.data.user.username)
         } catch (error) {
-            setMessage(error.response?.data?.message || 'Invalid credentials')
+            setMessage(error.response?.data?.message || error.response?.data?.errors[0]?.msg || 'Invalid credentials')
         }
     }
 
